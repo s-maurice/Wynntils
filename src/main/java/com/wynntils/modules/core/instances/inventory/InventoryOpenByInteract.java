@@ -17,16 +17,18 @@ public class InventoryOpenByInteract implements IInventoryOpenAction {
 //        this.interactType = interactType;
 //    }
 
-    private static final CPacketPlayerTryUseItem rightClick = new CPacketPlayerTryUseItem(EnumHand.MAIN_HAND);
+//    private static final CPacketPlayerTryUseItem rightClick = new CPacketPlayerTryUseItem(EnumHand.MAIN_HAND);
 
 
     @Override
     public void onOpen(FakeInventory inv, Runnable onDrop) {
         Minecraft mc = ModCore.mc();
 
+        System.out.println("here");
 //        mc.playerController.processRightClick(mc.player, mc.world, EnumHand.MAIN_HAND);
 //        System.out.println(mc.objectMouseOver.entityHit);
-
         PacketQueue.queueComplexPacket(new CPacketUseEntity(mc.objectMouseOver.entityHit), SPacketOpenWindow.class).setSender(NetHandlerPlayClient::sendPacket).onDrop(onDrop);
+
+//        PacketQueue.queueComplexPacket(rightClick, SPacketOpenWindow.class).setSender(NetHandlerPlayClient::sendPacket).onDrop(onDrop);
     }
 }
