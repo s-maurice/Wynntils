@@ -195,7 +195,7 @@ public class FakeInventory {
         close(InventoryResult.CLOSED_PREMATURELY);
     }
 
-    // detects the GUI open, and gatters information
+    // detects the GUI open, and gathers information
     @SubscribeEvent
     public void onInventoryReceive(PacketEvent<SPacketOpenWindow> e) {
         if (!e.getPacket().getGuiId().equalsIgnoreCase("minecraft:container") || !e.getPacket().hasSlots()) {
