@@ -11,6 +11,7 @@ import com.wynntils.modules.core.instances.inventory.InventoryOpenByInteract;
 import com.wynntils.modules.questbook.events.custom.QuestBookUpdateEvent;
 import com.wynntils.modules.questbook.managers.QuestManager;
 import net.minecraft.client.Minecraft;
+import net.minecraft.inventory.ClickType;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.util.text.TextComponentString;
 
@@ -47,7 +48,24 @@ public class MarketManager {
 
         // receive items
         inv.onReceiveItems((i) -> {
-            System.out.println(i); // number 35 for search itemstack
+            // methology on fakeinv recieve
+            // identify which screen has been recieved -> take correct action
+            // can use lastInventory to identify that screens are moving forwards
+
+
+            System.out.println(i); // number 35 for search itemstack (compass)
+            i.clickItem(35,1, ClickType.PICKUP);
+            System.out.println(i); // number 35 for search itemstack (compass)
+
+            // then level filters: wood stone gold iron diamond swords - 4, 5, 6, 12, 13, 14, 15, 21, 22, 23
+            // forward to page 2 button, golden_shovel  item 35
+            // search button lime_terracotta item 53
+
+            // Strings to regex - use to identify where in inventory
+            //[Pg. 1] Marketplace §8[Lv. 60-79]
+            //[Pg. 1] Filter Items
+            //[Pg. 2] Filter Items
+            //[Pg. 3] Filter Items
         });
 
         // closing
